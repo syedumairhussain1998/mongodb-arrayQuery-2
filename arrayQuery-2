@@ -1,0 +1,12 @@
+
+const Inventory = require("../models/Inventory");
+const list = async (request, response) => {
+  const data = await Inventory.find({ "dim_cm.0": { $gt: 22 } });
+  console.log(data.length);
+  response.json({ data });
+};
+module.exports = { list };  
+
+// find all the elements where the 0th index of dim_cm (array) is > 22 
+
+// dim_cm.0 where 0 is the index
